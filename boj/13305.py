@@ -3,25 +3,17 @@ def run():
 
     length_lst = list(map(int, input().split(" ")))
     price_lst = list(map(int, input().split(" ")))
-    print(price_lst)
 
-    oil = 0
-    now = 0
-    while now < N:
-        next = now + 1
+    oil = price_lst[0]
+    now = length_lst[0] * oil
 
-        while next < N -1:
-            if price_lst[now] > price_lst[next]:
-                break
-            next += 1
+    for i in range(1, N - 1):
+        if oil > price_lst[i]:
+            oil = price_lst[i]
 
-        print(next)
+        now += length_lst[i] * oil
 
-        now = next
-        oil += price_lst[now] * (next - now)
-        print(next)
-
-    print(oil)
+    print(now)
 
 
 if __name__ == "__main__":
